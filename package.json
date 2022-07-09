@@ -10,18 +10,14 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:git-visualizer.start"
+    "onCommand:git-visualizer.visualize"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "git-visualizer.start",
-        "title": "Git Visualizer: Start Git Graph Visualization"
-      },
-       {
-        "command": "git-visualizer.end",
-        "title": "Git Visualizer: Update Git Graph Visualization"
+        "command": "git-visualizer.visualize",
+        "title": "Git Visualizer: Visualize Git Graph"
       }
     ]
   },

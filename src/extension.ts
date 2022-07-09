@@ -14,8 +14,8 @@ export function activate(context: vscode.ExtensionContext) {
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with registerCommand
   // The commandId parameter must match the command field in package.json
-  let start = vscode.commands.registerCommand(
-    "git-visualizer.start",
+  let visualize = vscode.commands.registerCommand(
+    "git-visualizer.visualize",
     async () => {
       // The code you place here will be executed every time your command is executed
 
@@ -37,6 +37,7 @@ export function activate(context: vscode.ExtensionContext) {
       // Create and show a new webview
       if (currentPanel) {
         currentPanel.reveal(vscode.ViewColumn.One);
+        currentPanel.webview.postMessage(graph_data);
       } else {
         currentPanel = vscode.window.createWebviewPanel(
           "git_graph", // Identifies the type of the webview. Used internally
@@ -141,34 +142,7 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
 
-  let end = vscode.commands.registerCommand("git-visualizer.end", async () => {
-    // The code you place here will be executed every time your command is executed
-
-    // makes sure that only 1 workspace is open
-    if (vscode.workspace.workspaceFolders == undefined) {
-      vscode.window.showInformationMessage("No workspace opened!");
-      return 0;
-    } else if (vscode.workspace.workspaceFolders.length > 1) {
-      vscode.window.showInformationMessage("More than 1 workspace opened!");
-      return 0;
-    }
-
-    // get path of workspace (first workspace)
-    let ws_path = vscode.workspace.workspaceFolders[0].uri.fsPath;
-
-    // get git graph data
-    let graph_data = await get_git_graph(ws_path);
-
-    if (!currentPanel) {
-      return;
-    }
-
-    // Send a message to our webview.
-    // You can send any JSON serializable data.
-    currentPanel.webview.postMessage(graph_data);
-  });
-
-  context.subscriptions.push(start, end);
+  context.subscriptions.push(visualize);
 }
 
 // this method is called when your extension is deactivated

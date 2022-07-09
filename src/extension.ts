@@ -21,10 +21,26 @@ export function activate(context: vscode.ExtensionContext) {
 
       // makes sure that only 1 workspace is open
       if (vscode.workspace.workspaceFolders == undefined) {
-        vscode.window.showInformationMessage("No workspace opened!");
+        vscode.window.showInformationMessage(
+          "No workspace opened! Please open only 1 workspace."
+        );
         return 0;
       } else if (vscode.workspace.workspaceFolders.length > 1) {
-        vscode.window.showInformationMessage("More than 1 workspace opened!");
+        vscode.window.showInformationMessage(
+          "More than 1 workspace opened! Please open only 1 workspace."
+        );
+        return 0;
+      }
+
+      // check if .git folder exists
+      try {
+        await vscode.workspace.fs.stat(
+          vscode.Uri.joinPath(vscode.workspace.workspaceFolders[0].uri, ".git")
+        );
+      } catch {
+        vscode.window.showInformationMessage(
+          "Workspace is not a git repository! Please run 'git init' in the terminal."
+        );
         return 0;
       }
 
@@ -36,7 +52,6 @@ export function activate(context: vscode.ExtensionContext) {
 
       // Create and show a new webview
       if (currentPanel) {
-        currentPanel.reveal(vscode.ViewColumn.One);
         currentPanel.webview.postMessage(graph_data);
       } else {
         currentPanel = vscode.window.createWebviewPanel(
@@ -45,6 +60,7 @@ export function activate(context: vscode.ExtensionContext) {
           vscode.ViewColumn.One, // Editor column to show the new webview panel in.
           {
             enableScripts: true,
+            retainContextWhenHidden: true,
           } // Webview options. More on these later.
         );
 

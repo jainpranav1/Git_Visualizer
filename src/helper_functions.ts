@@ -39,9 +39,14 @@ export async function get_git_graph(ws_path: string) {
   // get all commits of repository
   let commits: Array<Commit> = [];
   {
-    // get commits with 'git log --reflog'
-    let log_result = await simpleGit(ws_path).log(["--reflog"]);
-    let log_res_all = log_result["all"];
+    let log_res_all;
+    try {
+      // get commits with 'git log --reflog'
+      let log_result = await simpleGit(ws_path).log(["--reflog"]);
+      log_res_all = log_result["all"];
+    } catch {
+      log_res_all = [];
+    }
 
     for (let i = 0; i < log_res_all.length; ++i) {
       // get parent hashes

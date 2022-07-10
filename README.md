@@ -22,6 +22,7 @@ The git visualizer is a vs code extension that generates beautiful, interactive 
   - T - Tag
   - R - Remote
   - S - Stash
+  - H - HEAD
 
 ## Notes
 

@@ -22,9 +22,9 @@ This [video](https://www.youtube.com/watch?v=JCpiVWqUxvY) shows the extension in
 
 - Circle - Commit
 - Square - Reference
-  - B - Branch
+  - B - Local Branch
   - T - Tag
-  - R - Remote
+  - R - Remote Branch
   - S - Stash
   - H - HEAD
 

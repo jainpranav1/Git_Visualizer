@@ -1,7 +1,8 @@
 {
   "name": "git-visualizer",
   "displayName": "Git Visualizer",
-  "description": "This tool can produce beautiful, interactive visualizations of your git repos.",
+  "description": "This tool can produce beautiful, interactive visualizations of your .",
+  "icon": "images/logo.png",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.68.0"

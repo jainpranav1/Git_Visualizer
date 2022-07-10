@@ -27,6 +27,9 @@ The git visualizer is a vs code extension that generates beautiful, interactive 
 ## Notes
 
 - This tool is slow on repos with more ~20 commits.
+- Right clicking on nodes saves the commit hash / reference name to your clipboard.
+- Hovering over nodes reveals commit message / reference name.
+- Nodes can be grabbed and moved with your cursor.
 
 ## Credits
 

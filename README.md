@@ -1,71 +1,32 @@
 # git-visualizer README
 
-The git visualizer is a vs code extension that generates beautiful visualizations of your git graphs.
+The git visualizer is a vs code extension that generates beautiful, interactive visualizations of your git graphs. The visualization style was inspired by the git-learning game [Oh My Git](https://ohmygit.org/), which I highly recommend. This extension is intended to serve as a playground to learn more about how git works.
 
-## Features
+## How to use the tool
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+1. Install the git-visualizer
+2. Open a folder that is a git repo
+3. Use `cmd + shift + p` or `ctrl + shift + p` to access the command palette.
+4. Select the command `Git Visualizer: Visualize Git Graph`.
+5. A visualization of the repo will be displayed in vscode!
 
-For example if there is an image subfolder under your extension project workspace:
+## Example: git graph visualization
 
-\!\[feature X\]\(images/feature-x.png\)
+![](/images/git_graph.PNG)
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Legend
 
-## Requirements
+- Circle - Commit
+- Square - Reference
+  - B - Branch
+  - T - Tag
+  - R - Remote
+  - S - Stash
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## Notes
 
-## Extension Settings
+- This tool is slow on repos with more ~20 commits.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+## Credits
 
-For example:
-
-This extension contributes the following settings:
-
-- `myExtension.enable`: enable/disable this extension
-- `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-- [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-- Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-- Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-- Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-- [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-- [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+This extension was developed by Pranav Jain.

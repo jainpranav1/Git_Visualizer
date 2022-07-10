@@ -1,6 +1,6 @@
 # git-visualizer README
 
-The git visualizer is a vs code extension that generates beautiful, interactive visualizations to help you learn about git. The visualization style was inspired by the git-learning game [Oh My Git](https://ohmygit.org/), which I highly recommend. This extension makes use of the excellent [force-graph library](https://www.npmjs.com/package/force-graph) to produce the visualizations.
+The git visualizer is a vs code extension that visualizes git graphs to help you learn about git. The visualization style was inspired by the git-learning game [Oh My Git](https://ohmygit.org/), which I highly recommend. This extension makes use of the excellent [force-graph library](https://www.npmjs.com/package/force-graph) to produce the visualizations.
 
 ## How to use the tool
 

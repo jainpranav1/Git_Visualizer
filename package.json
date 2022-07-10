@@ -1,11 +1,15 @@
 {
   "name": "git-visualizer",
   "displayName": "Git Visualizer",
-  "description": "This tool can produce beautiful, interactive visualizations of your .",
+  "description": "This tool visualizes git graphs to help you learn about git.",
   "icon": "images/logo.png",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.68.0"
+  },
+    "repository": {
+    "type": "git",
+    "url": "https://github.com/jainpranav1/Git-Visualizer"
   },
   "categories": [
     "Other"

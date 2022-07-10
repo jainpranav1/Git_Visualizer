@@ -10,6 +10,10 @@ The git visualizer is a vs code extension that generates beautiful, interactive 
 4. Select the command `Git Visualizer: Visualize Git Graph`.
 5. A visualization of the repo will be displayed in vscode!
 
+## Demo Video
+
+This [video](https://www.youtube.com/watch?v=JCpiVWqUxvY) shows the extension in action.
+
 ## Example: git graph visualization
 
 ![](/images/git_graph.PNG)
@@ -28,7 +32,7 @@ The git visualizer is a vs code extension that generates beautiful, interactive 
 
 - This tool is slow on repos with more ~20 commits.
 - Right clicking on nodes saves the commit hash / reference name to your clipboard.
-- Hovering over nodes reveals commit message / reference name.
+- Hovering over nodes reveals the commit message / reference name.
 - Nodes can be grabbed and moved with your cursor.
 
 ## Credits

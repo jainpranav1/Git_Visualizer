@@ -4,11 +4,18 @@
   "publisher": "PranavJain",
   "description": "This tool visualizes git graphs to help you learn about git.",
   "icon": "images/logo.png",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
     "vscode": "^1.68.0"
   },
-    "repository": {
+  "keywords": [
+    "git",
+    "learning",
+    "visualize",
+    "graph",
+    "github"
+  ],
+  "repository": {
     "type": "git",
     "url": "https://github.com/jainpranav1/Git_Visualizer"
   },

@@ -143,7 +143,7 @@ export function activate(context: vscode.ExtensionContext) {
               function nodePaint({ hover, type, x, y }, color, ctx) {
 
                 // commit, branch, tag, stash, remote, head
-                let identifier = ['C', 'B', 'T', 'S', 'R', 'H'];
+                let identifier = ['C', 'LB', 'T', 'S', 'RB', 'H'];
                 ctx.fillStyle = color;
 
                 [

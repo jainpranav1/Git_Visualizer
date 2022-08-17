@@ -4,6 +4,8 @@ import * as vscode from "vscode";
 import { simpleGit } from "simple-git";
 import * as path from "path";
 import { get_git_graph, Graph_Data } from "./helper_functions";
+var elementResizeDetectorMaker = require("element-resize-detector");
+
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -65,7 +67,8 @@ export function activate(context: vscode.ExtensionContext) {
         );
 
         // Get path to resource on disk
-        const onDiskPath = vscode.Uri.file(
+        // And get the special URI to use with the webview
+        const force_graph_js = currentPanel.webview.asWebviewUri(vscode.Uri.file(
           path.join(
             context.extensionPath,
             "node_modules",
@@ -73,14 +76,22 @@ export function activate(context: vscode.ExtensionContext) {
             "dist",
             "force-graph.js"
           )
-        );
+        ));
 
-        // And get the special URI to use with the webview
-        const force_graph_js = currentPanel.webview.asWebviewUri(onDiskPath);
+        const resize_js = currentPanel.webview.asWebviewUri(vscode.Uri.file(
+          path.join(
+            context.extensionPath,
+            "node_modules",
+            "element-resize-detector",
+            "dist",
+            "element-resize-detector.js"
+          )
+        ));
 
         // And set its HTML content
         currentPanel.webview.html = getWebviewContent(
           force_graph_js,
+          resize_js,
           graph_data
         );
 
@@ -94,12 +105,15 @@ export function activate(context: vscode.ExtensionContext) {
 
         function getWebviewContent(
           force_graph_js: vscode.Uri,
+          resize_js: vscode.Uri,
           graph_data: Graph_Data
         ) {
           return `<head>
           <style> body { margin: 0; } </style>
 
           <script src="${force_graph_js}"></script>
+          <script src="${resize_js}"></script>
+
           </head>
 
           <body>
@@ -150,7 +164,15 @@ export function activate(context: vscode.ExtensionContext) {
                   () => { ctx.beginPath(); ctx.arc(x, y, 5, 0, 2 * Math.PI, false); ctx.fill(); }, // circle
                   () => { ctx.fillRect(x - 6, y - 6, 12, 12); ctx.fillStyle = 'white'; ctx.font = '6px Sans-Serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(identifier[type], x, y);}, // text box
                 ][type == 0 ? 0 : 1]();
-              }                
+              }
+              
+              elementResizeDetectorMaker().listenTo(
+                document.body,
+                (el) => {
+                  Graph.width(el.offsetWidth);
+                  Graph.height(el.offsetHeight);
+                }
+              );
           </script>
           </body>`;
         }

@@ -109,7 +109,12 @@ export function activate(context: vscode.ExtensionContext) {
           graph_data: Graph_Data
         ) {
           return `<head>
-          <style> body { margin: 0; } </style>
+          <style>
+            html, body {
+              height: 100%;
+              width: 100%;
+            }
+          </style>
 
           <script src="${force_graph_js}"></script>
           <script src="${resize_js}"></script>
